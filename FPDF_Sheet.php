@@ -102,7 +102,8 @@ class FPDF_Sheet extends FPDF {
 	    $nb = 0;
 	    $i = 0;
 	    foreach($this->aCols as $col) {
-	        $nb=max($nb, $this->NbLines($this->aCols[$i]['w'], $data[$col['f']]));
+	    	$value = isset( $data[$col['f']] ) ? $data[$col['f']] : '';
+	        $nb=max($nb, $this->NbLines($this->aCols[$i]['w'], $value));
 	        $i++;
 	    }
 	    $h=$vpadding*$nb;
@@ -117,7 +118,8 @@ class FPDF_Sheet extends FPDF {
 	        //Draw the border
 	        $this->Rect($x, $y, $w, $h);
 	        //Print the text
-	        $this->MultiCell($w, $vpadding, $data[$col['f']], 0, $col['a'], $fill);
+	        $value = isset( $data[$col['f']] ) ? $data[$col['f']] : '';
+	        $this->MultiCell($w, $vpadding, $value, 0, $col['a'], $fill);
 	        //Put the position to the right of the cell
 	        $this->SetXY($x+$w, $y);
 		}
@@ -287,7 +289,9 @@ class FPDF_Sheet extends FPDF {
 		if (count($list) == 0) { // List must have at least one element
 			throw new Exception('List must have at least one element');
 		}
-		$firstElement = $list[0]; // Assume that all element has the same amount of properties
+		$arr = $list;
+		reset($arr);
+		$firstElement = current($arr); // Assume that all element has the same amount of properties
 		$keys = array_keys($firstElement);
 	
 		$this->InitializeColumns();
