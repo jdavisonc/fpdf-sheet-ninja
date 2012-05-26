@@ -5,16 +5,18 @@ PHP Library that let you create a simple Sheet (or Table) as PDF to later print 
 This library is a merge of code of http://www.fpdf.org/en/script/script14.php and http://www.fpdf.org/en/script/script3.php to get MultiCells features in the Sheet/Table.
 All thanks goes to its Authors.
 
-== Features
+Features
+-----------
 
-# Let you create printable sheet in PDF
-# Can add a 'Logo' image
-# Enable to set a Page Title
-# Enable to set a Footer
-# Enable to personalize Font, Size and Style for Title, Header and Footer
-# Create the Table with an array of data
+* Let you create printable sheet in PDF
+* Can add a 'Logo' image
+* Enable to set a Page Title
+* Enable to set a Footer
+* Enable to personalize Font, Size and Style for Title, Header and Footer
+* Create the Table with an array of data
 
-== Usage
+Usage
+-----------
 
 	$listAllOrdered = $this->someMethodGetResults();
 	$list = array();
